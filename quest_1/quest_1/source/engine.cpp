@@ -30,7 +30,29 @@ loadBlockData (
         p_objects with the appropriate data.
     */
 
-    return 0; // placeholder
+	std::ifstream gameFile;
+	gameFile.open(p_gameFile);
+	
+	int objType;
+	int index = 0;
+	while (!gameFile.eof())
+	{
+		for (int row = 0; row < p_gui.numRows; row++)
+		{
+			for (int col = 0; col < p_gui.numColumns; col++)
+			{
+				gameFile >> objType;
+				if (objType != 0)
+					p_objects[index].type = (Type)objType;
+				p_objects[index].dimensions = p_gui.getObjectDimensions(p_objects[index]);
+				p_objects[index].position = { col * p_objects[index].dimensions.width, 
+											  row * p_objects[index].dimensions.height };
+				index++;
+			}
+		}
+	}
+	gameFile.close();
+	return ++index;
 }
 
 void
