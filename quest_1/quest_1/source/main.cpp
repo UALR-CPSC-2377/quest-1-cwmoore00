@@ -15,7 +15,7 @@ int main (int argc, char *argv[]){
 	GUI gui;
 
 	//Create array of Objects:
-	const int maxObjects{ (gui.numColumns)*(gui.numRows) + 1 };//+1 for player
+	const int maxObjects{ (gui.numColumns)*(gui.numRows)};
 	Object objects[maxObjects];
 
 	//Initialize the game's data source
@@ -25,9 +25,9 @@ int main (int argc, char *argv[]){
     int numObjects = loadBlockData(gameFile, objects, gui);
 
 	//Task 3: Randomize Samus Sprite Appearance
-	numObjects++;
-	objects[0].type = Type::player;  // this is just a placeholder
-	randomPlayerData(numObjects, objects, gui);
+	//numObjects++;
+	//objects[0].type = Type::player;  // this is just a placeholder
+	//randomPlayerData(numObjects, objects, gui);
 
 	bool quit = false;
 	while (quit == false) {

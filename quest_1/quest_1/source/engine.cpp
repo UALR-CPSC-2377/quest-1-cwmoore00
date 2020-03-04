@@ -42,17 +42,16 @@ loadBlockData (
 			for (int col = 0; col < p_gui.numColumns; col++)
 			{
 				gameFile >> objType;
-				if (objType != 0)
-					p_objects[index].type = (Type)objType;
+				p_objects[index].type = (Type)objType;
 				p_objects[index].dimensions = p_gui.getObjectDimensions(p_objects[index]);
-				p_objects[index].position = { col * p_objects[index].dimensions.width, 
+				p_objects[index].position = { col * p_objects[index].dimensions.width,
 											  row * p_objects[index].dimensions.height };
 				index++;
 			}
 		}
 	}
 	gameFile.close();
-	return ++index;
+	return index;
 }
 
 void
